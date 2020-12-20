@@ -27,4 +27,20 @@ public class RegistrationController {
         userObject = registrationService.saveUser(user);
         return userObject;
     }
+
+    @PostMapping("/handshake")
+    public User handshakeHandler(@RequestBody User user) throws Exception {
+        String dbMail = user.getEmail();
+        String dbPassword = user.getPassword();
+
+        User userObj =null;
+
+        if (dbMail != null && dbPassword !=null){
+            userObj = registrationService.fetchUserByEmailAndPassword(dbMail,dbPassword);
+        }
+        if (userObj == null){
+            throw new Exception("User doesn't Exist");
+        }
+        return userObj;
+    }
 }
