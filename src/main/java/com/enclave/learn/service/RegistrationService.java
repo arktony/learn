@@ -14,7 +14,7 @@ public class RegistrationService {
         return registrationRepo.save(user);
     }
 
-    public User fetchUserByEmailId(String email){
-       return registrationRepo.findByEmailId(email);
+    public User fetchUserByEmail(String email){
+       return registrationRepo.findByEmail(email);
     }
 }
