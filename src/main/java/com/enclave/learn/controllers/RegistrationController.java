@@ -3,6 +3,7 @@ package com.enclave.learn.controllers;
 import com.enclave.learn.domain.User;
 import com.enclave.learn.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ public class RegistrationController {
     private RegistrationService registrationService;
 
     @PostMapping("/register")
+    @CrossOrigin(origins = "http://localhost:8081")
     public User registerUser(@RequestBody User user) throws Exception {
         String tempEmail = user.getEmail();
 
@@ -29,6 +31,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/handshake")
+    @CrossOrigin(origins = "http://localhost:8081")
     public User handshakeHandler(@RequestBody User user) throws Exception {
         String dbMail = user.getEmail();
         String dbPassword = user.getPassword();
